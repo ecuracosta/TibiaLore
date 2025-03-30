@@ -1,10 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-
+import os
 from transformers import pipeline
 
 # Your Hugging Face token
-huggingface_token = "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"
+huggingface_token = os.getenv("HUGGINGFACE_TOKEN")
 
 # Model configuration
 model_name = "meta-llama/Llama-3.2-1B"
@@ -17,6 +17,77 @@ pipe = pipeline(
     torch_dtype=torch.bfloat16,
     device_map="auto",
 )
+
+
+def build_prompt2(nombre_quest, leyenda, secciones, libros):
+    """
+    Generates a prompt for the LLM to create an immersive quest narrative that evolves with each step.
+
+    Args:
+        nombre_quest (str): Name of the quest.
+        leyenda (str): Legend or introduction of the quest.
+        secciones (list): List of sections with their descriptions.
+        libros (list): List of books providing historical context.
+
+    Returns:
+        str: Generated prompt.
+    """
+    prompt = f"""You are an expert fantasy storyteller tasked with creating an immersive and evolving narrative for the quest **{nombre_quest}** in a rich fantasy world. The narrative will be delivered to players one paragraph at a time, corresponding to each step of their quest. Your objective is to ensure that each paragraph seamlessly integrates the specific details of the current quest step, maintaining consistency and continuity throughout the story.
+
+    ### Core Elements:
+
+    1. **Legend/Introduction**: The legend is the backbone of the story. Begin by weaving the provided legend into an engaging and mysterious introduction that captivates the players and sets the stage for their adventure.
+
+    2. **Quest Progression**: For each quest step, generate a single, cohesive paragraph that:
+       - Reflects the specific actions and objectives of the current step.
+       - Provides clear motivation and context for why the players are undertaking this task.
+       - Ensures a natural and logical progression from the previous step, maintaining narrative consistency.
+       - Enhances immersion by incorporating relevant details from the legend and the provided books without introducing contradictions.
+
+    3. **Historical Context**: Utilize the information from the provided books to add depth and factual accuracy to the story. These details should serve as authentic background elements that enrich the narrative without overshadowing the main quest storyline.
+
+    ### Guidelines:
+
+    - **Centrality of the Legend**: The legend is integral to the quest. Ensure that all quest steps and narratives are connected to and derived from the legend.
+
+    - **Step-by-Step Evolution**: The story should unfold incrementally with each quest step. Each paragraph should build upon the previous one, reflecting the players' progress and actions.
+
+    - **Consistency and Accuracy**: Incorporate details from the provided books faithfully. Avoid introducing any lore or facts that contradict the information from these sources or the legend.
+
+    - **Tone and Style**: Maintain a serious and immersive tone that aligns with the grandeur of an epic fantasy story. Use rich, evocative language to bring the world to life while keeping each paragraph clear and focused on the current quest step.
+
+    ### Information Provided:
+    1. **Quest Name**: {nombre_quest}
+
+    2. **Quest Legend/Introduction**: 
+    {leyenda}
+
+    3. **Quest Sections**:
+    """
+    for i, seccion in enumerate(secciones, start=1):
+        prompt += f"\n{i}. **{seccion['section']}**: {seccion['content']}"
+
+    prompt += "\n\n4. **Books and Historical Context**:\n"
+    for i, libro in enumerate(libros, start=1):
+        prompt += f"\n{i}. {libro}"
+
+    prompt += """
+
+    ### Output Requirements:
+
+    - **Single Paragraph per Step**: For each quest step, generate one paragraph that fulfills the guidelines above.
+    - **Format**: The output should strictly be the paragraph for the current step, without additional explanations or additions at the end such as asking for feedback or anything else, ONLY the paragraph.
+    - **Realism**: Write as if all elements of the story are real, ensuring players feel genuinely immersed in the world as they undertake each quest step.
+
+    ### Example Output for Step 1:
+
+    [Your generated paragraph here.]
+
+    ### Instructions:
+    I will provide the specific quest step information in each call. Ensure that the generated paragraph aligns with the current step's details and maintains the overarching narrative's consistency and immersion.
+    """
+    return prompt
+
 
 def build_prompt(nombre_quest, leyenda, secciones, libros):
     """
@@ -88,7 +159,7 @@ def generate_story(quest_name, legend, sections, related_books):
         str: Generated story.
     """
     # Build the prompt
-    prompt = build_prompt(quest_name, legend, sections, related_books)
+    prompt = build_prompt2(quest_name, legend, sections, related_books)
 
     # Generate the story
     print("Generating story...")

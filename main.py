@@ -1,4 +1,7 @@
 from discord_bot import bot
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-# Ejecutar el bot
-bot.run("MTMyMjUyODYzMjMwODI0MDQ3Ng.GQzGvG.R_9pyKHJcem0bZvWf_JAdrgHKCeZzGRMJuu_P0")
+# Execute bot
+bot.run(os.getenv("DISCORD_BOT_TOKEN"))
