@@ -1,4 +1,4 @@
-# 🧙‍♂️ TibiaQuest Narrator
+# TbiaLore 🧙‍♂️ a Tibia quest narrator
 
 The purpose is to have a storytelling pipeline that transforms Tibia quests into immersive, voice-narrated experiences. It scrapes quest data from TibiaWiki, uses large language models to generate rich narratives, adds historical context from in-game books, and then narrates the story with background music via a Discord bot.
 
