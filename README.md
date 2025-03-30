@@ -4,8 +4,6 @@ The purpose is to have a storytelling pipeline that transforms Tibia quests into
 
 This project blends **fantasy RPG storytelling**, **machine learning**, and **voice synthesis** to breathe new life into Tibia quests. It provides context, motivation, and atmosphere to elevate the player’s experience.
 
----
-
 ## 🎯 Project Goals
 
 - 🎮 Enhance the storytelling of Tibia quests.
@@ -24,8 +22,6 @@ This project blends **fantasy RPG storytelling**, **machine learning**, and **vo
 - ✅ **LLM Story Generator**: Generates story context for each quest section using LLaMA.
 - ✅ **Text-to-Speech**: Converts story segments into narrated audio with optional background music.
 - ✅ **Discord Integration**: Users interact through commands like `!quest`, `!1`, `!say`, etc.
-
----
 
 ## 🧪 Tech Stack
 
@@ -59,8 +55,6 @@ This project blends **fantasy RPG storytelling**, **machine learning**, and **vo
    - Narrated text is slowed slightly.
    - Background music is randomly selected from a local folder (`./TibiaSoundtrack`).
 
----
-
 ## 📖 Example Flow
 
 1. A user types `!quest The Pits of Inferno Quest`.
@@ -75,10 +69,11 @@ This project blends **fantasy RPG storytelling**, **machine learning**, and **vo
 
 ## 🛠️ TODO / Future Improvements
 
-- [ ] Add multi-language support (Spanish, Portuguese, etc.)
+- [ ] Improve historical context creation
 - [ ] Allow full quest narration in a single flow
+- [ ] Add multi-language support (Spanish, Portuguese, etc.)
 - [ ] Improve background music selection by theme
-- [ ] Add image rendering in Discord from TibiaWiki pages
+- [ ] Add image rendering in Discord from TibiaWiki pages for quests
 - [ ] Add web interface for quest selection and listening
 
 ---
