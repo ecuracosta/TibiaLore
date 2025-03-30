@@ -33,6 +33,15 @@ This project blends **fantasy RPG storytelling**, **machine learning**, and **vo
 - 💬 discord.py
 - 🎵 pydub + ffmpeg
 
+## 🛠️ TODO / Future Improvements
+
+- [ ] Improve historical context creation
+- [ ] Allow full quest narration in a single flow
+- [ ] Add multi-language support (Spanish, Portuguese, etc.)
+- [ ] Improve background music selection by theme
+- [ ] Add image rendering in Discord from TibiaWiki pages for quests
+- [ ] Add web interface for quest selection and listening
+
 ---
 
 ## 🚀 Usage
@@ -66,15 +75,6 @@ This project blends **fantasy RPG storytelling**, **machine learning**, and **vo
    - Generates audio and plays it with immersive music
 
 ---
-
-## 🛠️ TODO / Future Improvements
-
-- [ ] Improve historical context creation
-- [ ] Allow full quest narration in a single flow
-- [ ] Add multi-language support (Spanish, Portuguese, etc.)
-- [ ] Improve background music selection by theme
-- [ ] Add image rendering in Discord from TibiaWiki pages for quests
-- [ ] Add web interface for quest selection and listening
 
 ## 🙌 Acknowledgements
 
