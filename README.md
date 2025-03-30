@@ -76,16 +76,12 @@ This project blends **fantasy RPG storytelling**, **machine learning**, and **vo
 - [ ] Add image rendering in Discord from TibiaWiki pages for quests
 - [ ] Add web interface for quest selection and listening
 
----
-
 ## 🙌 Acknowledgements
 
 - Tibia Fandom Wiki for quest and lore data
 - HuggingFace for LLaMA and TTS support
 - Coqui TTS for amazing voice synthesis
 - Tibia community for inspiration 🐉
-
----
 
 ## 🧪 About This Project
 
